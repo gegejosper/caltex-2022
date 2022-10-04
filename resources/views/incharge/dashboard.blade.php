@@ -8,7 +8,7 @@
             <div class="title_left">
             <h3>
                 @foreach($Branches as $Branch)
-                    {{$Branch->branchname}} Branch
+                    {{$Branch->branchname}}
                 @endforeach 
             </h3>
            
