@@ -26,7 +26,7 @@ class PumpController extends Controller
         $rules = array(
                 'pumpname' => 'required'
         );
-        $validator = Validator::make(Input::all(), $rules);
+        $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
             return Response::json(array(
                     'errors' => $validator->getMessageBag()->toArray(),

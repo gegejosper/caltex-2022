@@ -73,7 +73,7 @@
 
                 <div>
                  
-                  <p>© 2019 All Rights Reserved. </p>
+                  <p>© 2022 All Rights Reserved. </p>
                 </div>
               </div>
             </form>
