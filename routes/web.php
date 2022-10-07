@@ -165,9 +165,9 @@ Route::group(['middleware' =>'inchargeAuth','prefix' => 'incharge'], function(){
     Route::post('/dashboard-starcarddelete', 'InchargeDashboardController@starcard_delete')->name('starcard_delete');
 
     Route::post('/dashboard/submit-report/', 'InchargeController@submitreport')->name('submitreport');
-    Route::get('/dashboard/submit-report/check', 'InchargeController@checkreport')->name('checkreport');
+    Route::get('/dashboard/submit-report/check/{date_report}/{time_report}', 'InchargeController@checkreport')->name('checkreport');
 
-    Route::get('/daily-report/{logsession}', 'InchargeController@dailyreport')->name('dailyreport');
+    Route::get('/daily-report/{logsession}/{date_report}/{time_report}', 'InchargeController@dailyreport')->name('dailyreport');
 
     Route::get('/backdashboard', 'InchargeController@backdashboard')->name('backdashboard');
     Route::get('/report-save/{logsession}', 'InchargeController@reportsave')->name('reportsave');

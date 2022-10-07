@@ -1,5 +1,18 @@
 $(document).ready(function() {
     $("#accountsale").hide();
+    $('#report_date_hidden').val($('#report_date').val());
+    $('#report_time_hidden').val($('#report_time').val());
+    $('#report_date').on('keyup',function(){
+        let date_val = $(this).val();
+        $('#report_date_hidden').val(date_val);
+    });
+
+    $('#report_time').on('keyup',function(){
+        let time_val = $(this).val();
+        $('#report_time_hidden').val(time_val);
+    });
+
+
     $("#paymentoption input").change(function() {
         var val = $("input[name=payment]:checked").val();  
         if(val != undefined) {
@@ -80,6 +93,7 @@ $(document).ready(function() {
     };
     $("#creditadd").click(function() {
         $('#creditadd').attr('disabled', true);
+        var platenum_val = ($('input[name=creditplatenum]').val() === "") ? 'N/A' : $('input[name=creditplatenum]').val();  
           $.ajax({
               type: 'post',
               url: '/incharge/dashboard-creditadd',
@@ -90,10 +104,10 @@ $(document).ready(function() {
                   'gasname': $('#branchgas').val(),
                   'creditliters': $('input[name=creditliters]').val(),
                   'branchid': $('input[name=branchid]').val(),
-                  'creditplatenum': $('input[name=creditplatenum]').val(),
+                  'creditplatenum': platenum_val,
                   'creditamount': $('input[name=creditamount]').val(),
                   'unitprice': $('input[name=creditunitprice]').val(),
-                  'creditdate': $('input[name=creditdate]').val()
+                  'creditdate': $('input[name=report_date]').val()
               },
               success: function(data) {
                   if ((data.errors)){
@@ -200,7 +214,7 @@ $(document).ready(function() {
                 'branchid': $('input[name=branchid]').val(),
                 'displatenum': $('input[name=displatenum]').val(),
                 'disamount': $('input[name=disamount]').val(),
-                'disdate': $('input[name=disdate]').val()
+                'disdate': $('input[name=report_date]').val()
             },
             success: function(data) {
                 if ((data.errors)){
@@ -310,7 +324,7 @@ $(document).ready(function() {
                 'paymenttype' : $("input[name=payment]:checked").val(),
                 'salequantity': $('input[name=salequantity]').val(),
                 'saleamount': $('input[name=saleamount]').val(),
-                'salesdate': $('input[name=salesdate]').val()
+                'salesdate': $('input[name=report_date]').val()
             },
             success: function(data) {
                 if ((data.errors)){
@@ -423,7 +437,7 @@ $(document).ready(function() {
                 'branchid': $('input[name=branchid]').val(),
                 'desc' : $("input[name=description]").val(),
                 'amount': $('input[name=descamount]').val(),
-                'othersdate': $('input[name=othersdate]').val()
+                'othersdate': $('input[name=report_date]').val()
             },
             success: function(data) {
                 if ((data.errors)){
@@ -527,7 +541,7 @@ $(document).ready(function() {
                 'branchid': $('input[name=branchid]').val(),
                 'amount': $('input[name=cardamount]').val(),
                 'note': $('input[name=note]').val(),
-                'star_card_date': $('input[name=carddate]').val()
+                'star_card_date': $('input[name=report_date]').val()
             },
             success: function(data) {
                 if ((data.errors)){

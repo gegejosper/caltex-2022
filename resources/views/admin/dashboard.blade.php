@@ -99,6 +99,19 @@
       </div>
         
     </div><!--row-->
+    <div class="row">
+    <div class="col-md-12  col-sm-12 col-xs-12">
+          <div class="x_panel">
+                  <div class="x_title">
+                    <h4>Shortcuts  </h4>
+                    <div class="clearfix"></div>
+                  </div>
+                  <div class="x_content">
+                  @include('admin.includes.branch-menu')
+                  </div>
+            </div>
+        </div>            
+</div>
 </div>
 <div id="updateGasModalDashBoard" class="modal fade" role="dialog">
     <div class="modal-dialog">

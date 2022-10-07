@@ -26,10 +26,11 @@ class AdminController extends Controller
     public function index()
     {
         $dataBranch = Branch::get();
+        $BranchId = 1;
         $data_branch_gas = Branch::with('branchgas')->get();
         $dataBranchgas = Branchgases::with('branchpump', 'branch')->get();
         $dataPurchase = Purchase::take(5)->latest()->get();
-        return view('admin.dashboard', compact('dataBranch', 'dataPurchase', 'dataBranchgas', 'data_branch_gas'));
+        return view('admin.dashboard', compact('dataBranch', 'dataPurchase', 'dataBranchgas', 'data_branch_gas', 'BranchId'));
     }
     public function sales()
     {

@@ -14,7 +14,8 @@
            
             </div>
             <div class="text-right">
-            <a href="javascript:;" class="btn btn-danger btn-success text-left clear-cache">Clear Cache</a>
+                {{session()->get('batchcode')}} 
+                <a href="javascript:;" class="btn btn-danger btn-success text-left clear-cache">Clear Cache</a>
             </div>
         </div>
     </div>
@@ -47,15 +48,26 @@
                             </li>
                         </ul>
                         <div id="myTabContent" class="tab-content">
+                            <div class="row" style="margin-bottom:20px;">
+                                <div class="col-lg-3">
+                                <div class="row mb-5">
+                                <div class="col-lg-6"> 
+                                    <label for="Date">Date</label>    
+                                    <input type="text" class="form-control"  aria-describedby="basic-addon2" name="report_date" id="report_date" value="{{ date('m-d-Y')}}"> 
+                                </div>
+                                <div class="col-lg-6">  
+                                    <label for="Date">Time</label>    
+                                    <input type="text" class="form-control"  aria-describedby="basic-addon2" name="report_time" id="report_time" value="" placeholder="5:00AM-12:30PM">  
+                                </div>
+                            </div>
+                                </div>
+                            </div>
                             
                             <div role="tabpanel" class="tab-pane fade active in" id="tab-credit" aria-labelledby="credit-tab">
                                 @csrf
                                 <div class="row">
                                     <div class="col-lg-3">
-                                        <div class="input-group col-lg-12">
-                                            <label for="Date">Date</label>
-                                            <input type="text" class="form-control"  aria-describedby="basic-addon2" name="creditdate" id="creditdate" value="{{ date('m-d-Y')}}">  
-                                        </div>
+                                        
                                         <div class="input-group col-lg-12">
                                         <label for="Account">Account</label>
                                         <select name="accountcredit" id="accountcredit" class="js-example-basic-single form-control select2" type="text">
@@ -176,10 +188,7 @@
                             <div role="tabpanel" class="tab-pane fade" id="tab-discount" aria-labelledby="discount-tab">
                                 <div class="row">
                                     <div class="col-lg-3">
-                                        <div class="input-group col-lg-12">
-                                            <label for="Date">Date</label>
-                                            <input type="text" class="form-control"  aria-describedby="basic-addon2" name="disdate" id="disdate" value="{{ date('m-d-Y')}}">  
-                                        </div>
+                                       
                                         <div class="input-group col-lg-12">
                                             <select name="accountdis" id="accountdis" class="js-example-basic-single form-control" type="text">
                                                 @foreach($dataAccount as $Account)
@@ -280,10 +289,7 @@
                             <div role="tabpanel" class="tab-pane fade" id="tab-sales" aria-labelledby="sales-tab">
                                 <div class="row">
                                     <div class="col-lg-3">
-                                        <div class="input-group col-lg-12">
-                                            <label for="Date">Date</label>
-                                            <input type="text" class="form-control"  aria-describedby="basic-addon2" name="salesdate" id="salesdate" value="{{ date('m-d-Y')}}">  
-                                        </div>
+                                       
                                         <div class="input-group col-lg-12">
                                         <label for="Invoice">Invoice No.</label>
                                         <input type="text" class="form-control"  aria-describedby="basic-addon2" name="saleinvoicenum" id="saleinvoicenum" value="">  
@@ -418,10 +424,7 @@
                             <div role="tabpanel" class="tab-pane fade" id="tab-others" aria-labelledby="others-tab">
                                 <div class="row">
                                     <div class="col-lg-3">
-                                        <div class="input-group col-lg-12">
-                                            <label for="Date">Date</label>
-                                            <input type="text" class="form-control"  aria-describedby="basic-addon2" name="othersdate" id="othersdate" value="{{ date('m-d-Y')}}">  
-                                        </div>
+                                        
                                         <div class="input-group col-lg-12">
                                             <label for="Description">Description</label>
                                             <input type="text" class="form-control" placeholder="Description"  aria-describedby="basic-addon2" name="description" id="description">
@@ -566,9 +569,11 @@
                                 </div>
                                 
                             </div>
-                            <div role="tabpanel" class="tab-pane fade" id="tab-pump" aria-labelledby="pump-tab">
+                            <div role="tabpanel" class="tab-pane fade " id="tab-pump" aria-labelledby="pump-tab">
                                 <div class="row">
                                     <form action="{{ route('submitreport') }}" method="post">
+                                    <input type="hidden" class="form-control"  aria-describedby="basic-addon2" name="report_date_hidden" id="report_date_hidden"> 
+                                    <input type="hidden" class="form-control"  aria-describedby="basic-addon2" name="report_time_hidden" id="report_time_hidden"> 
                                         <div class="col-lg-12">
                                             <div class="x_panel tile">
                                                 <div class="col-md-12 col-sm-12 col-lg-12">

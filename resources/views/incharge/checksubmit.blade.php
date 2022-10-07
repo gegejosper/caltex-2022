@@ -342,7 +342,7 @@
                     </div>
                     <div class="row">
                         <div class="col-lg-4"></div>
-                        <div class="col-lg-4"><a href="/incharge/backdashboard" class="btn btn-info btn-lg">BACK</a><a href="/incharge/report-save/{{$logsession}}" class="btn btn-info btn-lg">SAVE</a></div>
+                        <div class="col-lg-4"><a href="/incharge/backdashboard" class="btn btn-info btn-lg">BACK</a><a href="/incharge/report-save/{{$logsession}}/{{data_report_date}}/{{data_report_time}}" class="btn btn-info btn-lg">SAVE</a></div>
                         <div class="col-lg-4"></div>
                     </div>
                     

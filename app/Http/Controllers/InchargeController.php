@@ -246,14 +246,15 @@ class InchargeController extends Controller
         session()->forget('batchcode');
 
         
-        return redirect('/incharge/dashboard/submit-report/check');
+        return redirect('/incharge/dashboard/submit-report/check/'.$req->report_date_hidden.'/'.$req->report_time_hidden);
         
     }
-    public function checkreport(){
-        if (Auth::check())
-        {
+    public function checkreport($date_report, $time_report){
+        if (Auth::check()){
             $userId = Auth::user()->id;
         }
+        $data_report_time = $time_report;
+        $data_report_date = $date_report;
         $dataBranch = Branchuser::where('userid', '=', $userId)->first();
         $BranchId = $dataBranch->branchid;
         $dataBranch = Branch::get();
@@ -281,14 +282,14 @@ class InchargeController extends Controller
             array_push($arrayGas, $gassummary);
         }
         //dd($arrayGas);
-        return view('incharge.checksubmit', compact('dataBranch', 'BranchId', 'Branches', 'dataPumplog', 'dataBranchcredit', 'dataBranchdiscount', 'dataBranchsale', 'dataBranchother', 'logsession', 'arrayGas', 'data_star_cards'));
-        //return view('incharge.checksubmit', compact('dataBranch'));   
+        return view('incharge.checksubmit', compact('dataBranch', 'BranchId', 'Branches', 'dataPumplog', 'dataBranchcredit', 'dataBranchdiscount', 'dataBranchsale', 'dataBranchother', 'logsession', 'arrayGas', 'data_star_cards', 'data_report_time', 'data_report_date'));
     }
-    public function reportsave($logsession){
-        if (Auth::check())
-        {
+    public function reportsave($logsession, $date_report, $time_report){
+        if (Auth::check()){
             $userId = Auth::user()->id;
         }
+        $data_report_time = $time_report;
+        $data_report_date = $date_report;
         $dataBranch = Branchuser::where('userid', '=', $userId)->first();
         $BranchId = $dataBranch->branchid;
         $dataBranch = Branch::get();
@@ -346,7 +347,8 @@ class InchargeController extends Controller
                     ->update(['status' => 'FINAL']);
         
         $dataReport = new Branchreport();
-        $dataReport->reportdate = $get_date->creditdate;
+        $dataReport->reportdate = $data_report_date;
+        $dataReport->report_time = $data_report_time;
         $dataReport->sessionrecord = $logsession;
         $dataReport->branchid = $BranchId;
         $dataReport->userid = $userId;

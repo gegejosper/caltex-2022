@@ -74,15 +74,20 @@
                     <a href="/admin/order"><i class="fa fa-shopping-cart"></i> Order </a> 
                   </li>
 
-                  <li>
+                  <!-- <li>
                     <a href="/admin/petrol"><i class="fa fa-beer"></i> Petrol </a> 
-                  </li>
+                  </li> -->
                   <li>
-                    <a href="/admin/accounts"><i class="fa fa-users"></i> Accounts </a> 
+                    <a href="/admin/branches/gas/1"><i class="fa fa-beer"></i> Petrol </a> 
                   </li>
-                  
+                  <!-- <li>
+                    <a href="/admin/accounts"><i class="fa fa-users"></i> Accounts </a> 
+                  </li> -->
+                  <li>
+                    <a href="/admin/branches/accounts/{{$BranchId}}"><i class="fa fa-users"></i> Accounts </a> 
+                  </li>
 
-                  <li><a><i class="fa fa-sitemap"></i> Branches <span class="fa fa-chevron-down"></span></a>
+                  <!-- <li><a><i class="fa fa-sitemap"></i> Branches <span class="fa fa-chevron-down"></span></a>
                     <ul class="nav child_menu">
                     @foreach($dataBranch as $Branch)
                       <li>
@@ -91,7 +96,7 @@
                     @endforeach  
                    
                     </ul>
-                  </li>    
+                  </li>     -->
                   <li>
                     <a href="/admin/reports"><i class="fa fa-folder"></i> Reports </a> 
                   </li>
